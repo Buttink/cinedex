@@ -10,6 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -17,13 +20,45 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
+        dev {
+            minSdkVersion 21
+        }
+        prod {
+            minSdkVersion 15
+        }
+    }
 }
 
 dependencies {
+    provided 'com.google.auto.value:auto-value:1.2'
+    provided 'com.google.auto.factory:auto-factory:1.0-beta3'
+
+    annotationProcessor 'com.google.auto.value:auto-value:1.2'
+    annotationProcessor 'com.google.auto.factory:auto-factory:1.0-beta3'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:support-annotations:25.1.0'
+    compile 'com.google.dagger:dagger:2.8'
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.4'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
+
     testCompile 'junit:junit:4.12'
 }
