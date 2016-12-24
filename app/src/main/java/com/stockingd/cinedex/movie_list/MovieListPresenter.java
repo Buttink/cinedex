@@ -34,7 +34,7 @@ public class MovieListPresenter implements MovieListContract.Presenter {
     }
 
     @Override
-    public void onResume() {
+    public void requestModel() {
         view.showProgress();
         modelSubscription.unsubscribe();
         Observable<List<MovieListItemModel>> observable;

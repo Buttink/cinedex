@@ -5,7 +5,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.view.ContextThemeWrapper;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
@@ -28,7 +28,6 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
-import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -38,7 +37,7 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     public static String EXTRA_ARGUMENTS = "EXTRA_ARGUMENTS";
 
     @BindView(R.id.movie_list) RecyclerView movieList;
-    @BindView(R.id.progress) ProgressBar progressBar;
+    @BindView(R.id.refresh) SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.errror) View error;
 
     @Inject Units units;
@@ -94,28 +93,32 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
             }
         });
         movieList.setAdapter(adapter.get());
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            presenter.requestModel();
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.onResume();
+        presenter.requestModel();
     }
 
     @OnClick(R.id.try_again)
     public void onTryAgainClicked() {
-        presenter.onResume();
+        presenter.requestModel();
     }
 
     @Override
     public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setRefreshing(true);
         error.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onModelUpdate(List<MovieListItemModel> model) {
-        progressBar.setVisibility(View.INVISIBLE);
+        swipeRefreshLayout.setRefreshing(false);
         error.setVisibility(View.INVISIBLE);
         adapter.ifPresent(adapter -> {
             adapter.updateModel(model);
@@ -124,7 +127,7 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
 
     @Override
     public void onError() {
-        progressBar.setVisibility(View.INVISIBLE);
+        swipeRefreshLayout.setRefreshing(false);
         error.setVisibility(View.VISIBLE);
     }
 

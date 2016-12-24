@@ -14,7 +14,7 @@ public interface MovieListContract {
     }
 
     interface Presenter {
-        void onResume();
+        void requestModel();
         void onPause();
         void onItemClicked(long movieId);
     }
