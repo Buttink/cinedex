@@ -1,6 +1,5 @@
 package com.stockingd.cinedex.tmdb;
 
-import com.bluelinelabs.logansquare.LoganSquare;
 import com.github.aurae.retrofit2.LoganSquareConverterFactory;
 import com.stockingd.cinedex.BuildConfig;
 
@@ -11,10 +10,8 @@ import dagger.Provides;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import rx.plugins.RxJavaObservableExecutionHook;
 import rx.schedulers.Schedulers;
 
 @Module

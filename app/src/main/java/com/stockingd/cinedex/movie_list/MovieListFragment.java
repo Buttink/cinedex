@@ -13,10 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
 
-import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.R;
+import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolder;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolderFactory;

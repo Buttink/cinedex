@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.R;
+import com.stockingd.cinedex.app.BaseFragment;
 
 import javax.inject.Inject;
 

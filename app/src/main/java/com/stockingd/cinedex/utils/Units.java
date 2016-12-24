@@ -2,7 +2,6 @@ package com.stockingd.cinedex.utils;
 
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.util.TypedValue;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
