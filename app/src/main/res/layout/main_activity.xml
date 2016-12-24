@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.stockingd.cinedex.main.MainActivity"
     >
 
-    <!-- The main content view -->
-    <FrameLayout
-        android:id="@+id/content_container"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:background="?attr/colorPrimary"
+        />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         >
 
-        <!--<fragment-->
-            <!--android:id="@+id/movie_list_fragment"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:name="com.stockingd.cinedex.movie_list.MovieListFragment"-->
-            <!--/>-->
-
-    </FrameLayout>
-
-    <!-- The navigation drawer -->
-    <FrameLayout
-        android:id="@+id/drawer"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        >
-
-        <fragment
-            android:id="@+id/drawer_fragment"
+        <!-- The main content view -->
+        <FrameLayout
+            android:id="@+id/content_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.stockingd.cinedex.drawer.DrawerFragment"
-            />
+            >
 
-    </FrameLayout>
+        </FrameLayout>
 
-</android.support.v4.widget.DrawerLayout>
+        <!-- The navigation drawer -->
+        <FrameLayout
+            android:id="@+id/drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            >
+
+            <fragment
+                android:id="@+id/drawer_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.stockingd.cinedex.drawer.DrawerFragment"
+                />
+
+        </FrameLayout>
+
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>
