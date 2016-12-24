@@ -3,6 +3,7 @@ package com.stockingd.cinedex.movie_list;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,20 +34,35 @@ import butterknife.ButterKnife;
 
 public class MovieListFragment extends BaseFragment implements MovieListContract.View {
 
+    public static String EXTRA_ARGUMENTS = "EXTRA_ARGUMENTS";
+
     @BindView(R.id.movie_list) RecyclerView movieList;
     @BindView(R.id.progress) ProgressBar progressBar;
+    @BindView(R.id.errror) View error;
 
     @Inject Units units;
     @Inject MovieListPresenter presenter;
     @Inject MovieListViewHolderFactory viewHolderFactory;
 
-    private Optional<BindingListAdapter<MovieListItemModel, MovieListViewHolder>> adapter;
+    @NonNull private Optional<BindingListAdapter<MovieListItemModel, MovieListViewHolder>> adapter
+            = Optional.empty();
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Bundle arguments = getArguments();
+        MovieListFragmentArgs args = null;
+        if (arguments != null) {
+            args = arguments.getParcelable(EXTRA_ARGUMENTS);
+        }
+
+        MovieListFragmentArgs finalArgs = args;
         component().map(component -> {
-            return component.movieListComponent(new MovieListModule(this));
+            if (finalArgs != null) {
+                return component.movieListComponent(new MovieListModule(this, finalArgs));
+            }
+
+            return null;
         }).ifPresent(c -> {
             c.inject(this);
         });
@@ -88,14 +104,22 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
+        error.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onModelUpdate(List<MovieListItemModel> model) {
         progressBar.setVisibility(View.INVISIBLE);
+        error.setVisibility(View.INVISIBLE);
         adapter.ifPresent(adapter -> {
             adapter.updateModel(model);
         });
+    }
+
+    @Override
+    public void onError() {
+        progressBar.setVisibility(View.INVISIBLE);
+        error.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.View;
 import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.app.BaseActivity;
 import com.stockingd.cinedex.movie_list.MovieListFragment;
+import com.stockingd.cinedex.movie_list.MovieListFragmentArgs;
 
 import javax.inject.Inject;
 
@@ -37,15 +38,21 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Override
     public void showMostPopular() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_container, new MovieListFragment())
-                .commit();
+        swapIn(MovieListFragmentArgs.Mode.MostPopular);
     }
 
     @Override
     public void showHighestRated() {
+        swapIn(MovieListFragmentArgs.Mode.HighestRated);
+    }
+
+    private void swapIn(MovieListFragmentArgs.Mode mode) {
+        MovieListFragment fragment = new MovieListFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(MovieListFragment.EXTRA_ARGUMENTS, MovieListFragmentArgs.create(mode));
+        fragment.setArguments(args);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_container, new MovieListFragment())
+                .replace(R.id.content_container, fragment)
                 .commit();
     }
 

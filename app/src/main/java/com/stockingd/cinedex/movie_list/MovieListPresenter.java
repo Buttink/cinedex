@@ -19,14 +19,17 @@ import rx.subscriptions.Subscriptions;
 public class MovieListPresenter implements MovieListContract.Presenter {
 
     @NonNull private final MovieListContract.View view;
+    @NonNull private final MovieListFragmentArgs movieListFragmentArgs;
     @NonNull private final MovieListService movieListService;
 
     @NonNull private Subscription modelSubscription = Subscriptions.empty();
 
     @Inject
     public MovieListPresenter(@NonNull MovieListContract.View view,
+                              @NonNull MovieListFragmentArgs movieListFragmentArgs,
                               @NonNull MovieListService movieListService) {
         this.view = view;
+        this.movieListFragmentArgs = movieListFragmentArgs;
         this.movieListService = movieListService;
     }
 
@@ -34,9 +37,23 @@ public class MovieListPresenter implements MovieListContract.Presenter {
     public void onResume() {
         view.showProgress();
         modelSubscription.unsubscribe();
-        modelSubscription = this.movieListService.getModel()
+        Observable<List<MovieListItemModel>> observable;
+        switch (movieListFragmentArgs.mode()) {
+            default:
+            case MostPopular:
+                observable = movieListService.getMostPopularMoviesModel();
+                break;
+            case HighestRated:
+                observable = movieListService.getHighestRatedMoviesModel();
+                break;
+        }
+        modelSubscription = observable
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::onModelUpdate);
+                .subscribe(model -> {
+                    view.onModelUpdate(model);
+                }, error -> {
+                    view.onError();
+                });
     }
 
     @Override

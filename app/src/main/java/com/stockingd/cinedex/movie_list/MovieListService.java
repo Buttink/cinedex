@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
-import com.stockingd.cinedex.utils.URIUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +23,20 @@ public class MovieListService {
         this.theMovieDbService = theMovieDbService;
     }
 
-    public Observable<List<MovieListItemModel>> getModel() {
+    public Observable<List<MovieListItemModel>> getMostPopularMoviesModel() {
         return theMovieDbService.getPopularMovies().flatMap(wrapper -> {
+            return Observable.from(wrapper.results);
+        }).map(item -> {
+            return MovieListItemModel.create(
+                    item.id,
+                    Optional.ofNullable(item.posterPath),
+                    item.title,
+                    String.valueOf(Math.round(item.voteAverage*10)/10));
+        }).toList();
+    }
+
+    public Observable<List<MovieListItemModel>> getHighestRatedMoviesModel() {
+        return theMovieDbService.getTopRatedMovies().flatMap(wrapper -> {
             return Observable.from(wrapper.results);
         }).map(item -> {
             return MovieListItemModel.create(

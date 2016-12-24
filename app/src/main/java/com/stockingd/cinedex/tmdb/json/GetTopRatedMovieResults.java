@@ -6,11 +6,11 @@ import com.bluelinelabs.logansquare.annotation.JsonObject;
 import java.util.List;
 
 @JsonObject(fieldDetectionPolicy = JsonObject.FieldDetectionPolicy.NONPRIVATE_FIELDS)
-public class GetPopularMovieResultsWrapper {
+public class GetTopRatedMovieResults {
 
     public int page;
 
-    public List<GetPopularMovieResults> results;
+    public List<MovieListResultObject> results;
 
     @JsonField(name = "total_results")
     public int totalResults;

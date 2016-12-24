@@ -10,6 +10,7 @@ public interface MovieListContract {
         void onModelUpdate(List<MovieListItemModel> model);
         void showMovieDetails();
         void showProgress();
+        void onError();
     }
 
     interface Presenter {
