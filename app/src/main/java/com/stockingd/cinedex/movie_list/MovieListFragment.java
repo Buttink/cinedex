@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.R;
@@ -33,6 +34,7 @@ import butterknife.ButterKnife;
 public class MovieListFragment extends BaseFragment implements MovieListContract.View {
 
     @BindView(R.id.movie_list) RecyclerView movieList;
+    @BindView(R.id.progress) ProgressBar progressBar;
 
     @Inject Units units;
     @Inject MovieListPresenter presenter;
@@ -84,7 +86,13 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     }
 
     @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void onModelUpdate(List<MovieListItemModel> model) {
+        progressBar.setVisibility(View.INVISIBLE);
         adapter.ifPresent(adapter -> {
             adapter.updateModel(model);
         });

@@ -10,7 +10,6 @@ import com.stockingd.cinedex.movie_list.MovieListFragment;
 
 import javax.inject.Inject;
 
-import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

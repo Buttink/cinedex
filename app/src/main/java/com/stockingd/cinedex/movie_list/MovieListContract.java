@@ -9,6 +9,7 @@ public interface MovieListContract {
     interface View {
         void onModelUpdate(List<MovieListItemModel> model);
         void showMovieDetails();
+        void showProgress();
     }
 
     interface Presenter {

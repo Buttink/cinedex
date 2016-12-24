@@ -6,6 +6,7 @@
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
     tools:layout_height="match_parent"
     tools:layout_width="200dp"
     >
@@ -16,7 +17,7 @@
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:elevation="3dp"
         app:layout_constraintDimensionRatio="2:3"
         app:layout_constraintLeft_toLeftOf="@+id/left_margin"
@@ -43,6 +44,7 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:paddingBottom="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/left_margin"
@@ -56,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"
-        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintGuide_begin="8dp"
+        tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp"
         />
 
@@ -66,8 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="301dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp"
-        tools:layout_editor_absoluteX="184dp"
+        app:layout_constraintGuide_end="24dp"
+        tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="0dp"
         />
 
@@ -76,18 +78,18 @@
         android:layout_width="32dp"
         android:layout_height="0dp"
         android:background="@drawable/rating_background_shape"
+        android:clipToPadding="false"
         android:elevation="5dp"
         android:gravity="center"
-        android:clipToPadding="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/md_white_1000"
+        app:layout_constraintBottom_toBottomOf="@+id/card"
         app:layout_constraintDimensionRatio="1:1"
-        tools:text="10"
-        app:layout_constraintTop_toTopOf="@+id/card"
         app:layout_constraintLeft_toRightOf="@+id/card"
         app:layout_constraintRight_toRightOf="@+id/card"
-        app:layout_constraintBottom_toBottomOf="@+id/card"
+        app:layout_constraintTop_toTopOf="@+id/card"
         app:layout_constraintVertical_bias="0.95"
+        tools:text="10"
         />
 
 </android.support.constraint.ConstraintLayout>

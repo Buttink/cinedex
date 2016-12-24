@@ -3,7 +3,6 @@ package com.stockingd.cinedex.main;
 import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.PerActivity;
-import com.stockingd.cinedex.drawer.event.CloseDrawerEvent;
 import com.stockingd.cinedex.drawer.event.ShowHighestRatedEvent;
 import com.stockingd.cinedex.drawer.event.ShowMostPopularEvent;
 
@@ -37,15 +36,12 @@ public class MainPresenter implements MainContract.Presenter {
     @Subscribe
     public void onShowMostPopular(ShowMostPopularEvent event) {
         view.showMostPopular();
+        view.closeDrawer();
     }
 
     @Subscribe
     public void onHighestRatedPopular(ShowHighestRatedEvent event) {
         view.showHighestRated();
-    }
-
-    @Subscribe
-    public void onCloseDrawer(CloseDrawerEvent event) {
         view.closeDrawer();
     }
 

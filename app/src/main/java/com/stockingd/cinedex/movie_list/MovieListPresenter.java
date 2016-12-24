@@ -32,6 +32,7 @@ public class MovieListPresenter implements MovieListContract.Presenter {
 
     @Override
     public void onResume() {
+        view.showProgress();
         modelSubscription.unsubscribe();
         modelSubscription = this.movieListService.getModel()
                 .observeOn(AndroidSchedulers.mainThread())

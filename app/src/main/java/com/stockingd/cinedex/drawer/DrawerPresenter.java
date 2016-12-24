@@ -3,7 +3,6 @@ package com.stockingd.cinedex.drawer;
 import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.PerFragment;
-import com.stockingd.cinedex.drawer.event.CloseDrawerEvent;
 import com.stockingd.cinedex.drawer.event.ShowHighestRatedEvent;
 import com.stockingd.cinedex.drawer.event.ShowMostPopularEvent;
 
@@ -24,12 +23,10 @@ public class DrawerPresenter implements DrawerContract.Presenter {
     @Override
     public void onMostPopularClicked() {
         eventBus.post(new ShowMostPopularEvent());
-        eventBus.post(new CloseDrawerEvent());
     }
 
     @Override
     public void onHighestRatedClicked() {
         eventBus.post(new ShowHighestRatedEvent());
-        eventBus.post(new CloseDrawerEvent());
     }
 }
