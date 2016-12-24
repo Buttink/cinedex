@@ -1,6 +1,9 @@
-package com.stockingd.cinedex;
+package com.stockingd.cinedex.app;
 
 import android.support.v4.app.Fragment;
+
+import com.stockingd.cinedex.CinedexApplication;
+import com.stockingd.cinedex.CinedexComponent;
 
 import java.util.Optional;
 

@@ -11,15 +11,13 @@ public abstract class MovieListItemModel implements Identifiable {
     public static MovieListItemModel create(long id,
                                             Optional<String> posterPath,
                                             String title,
-                                            String summary,
                                             String rating) {
-        return new AutoValue_MovieListItemModel(id, posterPath, title, summary, rating);
+        return new AutoValue_MovieListItemModel(id, posterPath, title, rating);
     }
 
     public abstract long id();
     public abstract Optional<String> posterPath();
     public abstract String title();
-    public abstract String summary();
     public abstract String rating();
 
 }

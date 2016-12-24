@@ -18,8 +18,10 @@ public class Units {
     }
 
     public float toDp(int pixels) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                                         pixels,
-                                         resources.getDisplayMetrics());
+        return pixels / resources.getDisplayMetrics().density;
+    }
+
+    public float toPx(float dp) {
+        return dp * resources.getDisplayMetrics().density;
     }
 }

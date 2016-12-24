@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_blue_grey_900"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:id="@+id/most_popular"
+                android:drawableStart="@drawable/ic_popular_white_24dp"
+                android:text="Most Popular"
+                style="@style/Widget.Cinedex.Navigation.Button"
+                />
+
+
+            <Button
+                android:id="@+id/highest_rated"
+                android:drawableStart="@drawable/ic_rating_white_24dp"
+                android:text="Highest Rated"
+                style="@style/Widget.Cinedex.Navigation.Button"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

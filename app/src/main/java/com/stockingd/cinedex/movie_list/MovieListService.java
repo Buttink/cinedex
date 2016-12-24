@@ -32,7 +32,6 @@ public class MovieListService {
                     item.id,
                     Optional.ofNullable(item.posterPath),
                     item.title,
-                    item.overview,
                     String.valueOf(Math.round(item.voteAverage*10)/10));
         }).toList();
     }

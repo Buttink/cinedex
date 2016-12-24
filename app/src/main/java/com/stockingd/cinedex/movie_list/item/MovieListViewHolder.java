@@ -29,7 +29,6 @@ public class MovieListViewHolder extends BindingViewHolder<MovieListItemModel> {
     @BindView(R.id.item) View item;
     @BindView(R.id.poster) ImageView poster;
     @BindView(R.id.title) TextView title;
-    @BindView(R.id.summary) TextView summary;
     @BindView(R.id.rating) TextView rating;
 
     @NonNull private final MovieListPresenter movieListPresenter;
@@ -65,7 +64,6 @@ public class MovieListViewHolder extends BindingViewHolder<MovieListItemModel> {
                     });
         }).orElse(Subscribers.empty());
         title.setText(data.title());
-        summary.setText(data.summary());
         rating.setText(data.rating());
     }
 }

@@ -1,16 +1,19 @@
 package com.stockingd.cinedex.movie_list;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
-import com.stockingd.cinedex.BaseFragment;
+import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolder;
@@ -23,6 +26,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -49,8 +53,6 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Context context = new ContextThemeWrapper(getActivity(), R.style.AppTheme_Dark);
-        inflater = inflater.cloneInContext(context);
         return inflater.inflate(R.layout.movie_list_fragment, container, false);
     }
 
@@ -58,9 +60,12 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        int width = (int) units.toDp(movieList.getWidth());
-        int spanCount = width / 120;
-        movieList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = (int) units.toDp(size.x);
+        movieList.setLayoutManager(new GridLayoutManager(getActivity(), width / 180));
         adapter = Optional.of(new BindingListAdapter<MovieListItemModel, MovieListViewHolder>() {
             @Override
             public MovieListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

@@ -1,5 +1,9 @@
 package com.stockingd.cinedex;
 
+import com.stockingd.cinedex.drawer.DrawerComponent;
+import com.stockingd.cinedex.drawer.DrawerModule;
+import com.stockingd.cinedex.main.MainComponent;
+import com.stockingd.cinedex.main.MainModule;
 import com.stockingd.cinedex.movie_list.MovieListComponent;
 import com.stockingd.cinedex.movie_list.MovieListModule;
 import com.stockingd.cinedex.tmdb.TheMovieDbModule;
@@ -17,4 +21,8 @@ import dagger.Component;
 public interface CinedexComponent {
 
     MovieListComponent movieListComponent(MovieListModule movieListModule);
+
+    DrawerComponent drawerComponent(DrawerModule drawerModule);
+
+    MainComponent mainComponenet(MainModule mainModule);
 }

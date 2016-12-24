@@ -5,24 +5,40 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.stockingd.cinedex.MainActivity"
+    tools:context="com.stockingd.cinedex.main.MainActivity"
     >
 
     <!-- The main content view -->
-    <fragment
-        android:id="@+id/movie_list_fragment"
+    <FrameLayout
+        android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.stockingd.cinedex.movie_list.MovieListFragment"
-        />
+        >
+
+        <!--<fragment-->
+            <!--android:id="@+id/movie_list_fragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:name="com.stockingd.cinedex.movie_list.MovieListFragment"-->
+            <!--/>-->
+
+    </FrameLayout>
 
     <!-- The navigation drawer -->
-    <fragment
-        android:id="@+id/drawer_fragment"
+    <FrameLayout
+        android:id="@+id/drawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="com.stockingd.cinedex.drawer.DrawerFragment"
-        />
+        >
+
+        <fragment
+            android:id="@+id/drawer_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.stockingd.cinedex.drawer.DrawerFragment"
+            />
+
+    </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>

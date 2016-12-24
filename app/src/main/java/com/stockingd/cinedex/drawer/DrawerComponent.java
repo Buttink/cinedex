@@ -2,11 +2,13 @@ package com.stockingd.cinedex.drawer;
 
 import com.stockingd.cinedex.PerFragment;
 
-import dagger.Component;
+import dagger.Subcomponent;
 
 @PerFragment
-@Component(modules = {
+@Subcomponent(modules = {
         DrawerModule.class,
 })
 public interface DrawerComponent {
+
+    void inject(DrawerFragment drawerFragment);
 }

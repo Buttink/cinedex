@@ -14,6 +14,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/app_background_shape</item>
+    </style>
+
+    <style name="Widget.Cinedex.Navigation.Button" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:drawablePadding">32dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body2</item>
     </style>
 
 </resources>
