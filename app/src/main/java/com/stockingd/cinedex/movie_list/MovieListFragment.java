@@ -31,6 +31,7 @@ import javax.inject.Inject;
 import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MovieListFragment extends BaseFragment implements MovieListContract.View {
 
@@ -98,6 +99,11 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     @Override
     public void onResume() {
         super.onResume();
+        presenter.onResume();
+    }
+
+    @OnClick(R.id.try_again)
+    public void onTryAgainClicked() {
         presenter.onResume();
     }
 
