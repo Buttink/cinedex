@@ -84,6 +84,7 @@ public class MovieDetailsFragment extends BaseFragment implements MovieDetailsCo
             swipeRefreshLayout.setRefreshing(true);
             presenter.onResume();
         });
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
     }
 
     @Override
