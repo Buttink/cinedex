@@ -28,7 +28,7 @@ import com.stockingd.cinedex.widget.BindingListAdapter;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import jp.yokomark.optional.Optional;
 
 import javax.inject.Inject;
 

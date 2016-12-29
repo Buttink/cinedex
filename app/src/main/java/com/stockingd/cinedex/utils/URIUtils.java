@@ -1,7 +1,7 @@
 package com.stockingd.cinedex.utils;
 
 import java.net.URI;
-import java.util.Optional;
+import jp.yokomark.optional.Optional;
 
 public class URIUtils {
 

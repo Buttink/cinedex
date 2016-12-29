@@ -20,10 +20,9 @@ import com.stockingd.cinedex.movie_details.BackdropView;
 import com.stockingd.cinedex.movie_details.MovieDetailsActivity;
 import com.stockingd.cinedex.tmdb.TheMovieDbImagePresenter;
 
-import java.util.Optional;
+import jp.yokomark.optional.Optional;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

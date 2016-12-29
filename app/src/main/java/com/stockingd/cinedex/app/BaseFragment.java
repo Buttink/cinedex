@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import com.stockingd.cinedex.CinedexApplication;
 import com.stockingd.cinedex.CinedexComponent;
 
-import java.util.Optional;
+import jp.yokomark.optional.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;

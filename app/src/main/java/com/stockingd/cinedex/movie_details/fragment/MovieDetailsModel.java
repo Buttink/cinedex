@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.google.auto.value.AutoValue;
 
-import java.util.Optional;
+import jp.yokomark.optional.Optional;
 
 @AutoValue
 public abstract class MovieDetailsModel {
