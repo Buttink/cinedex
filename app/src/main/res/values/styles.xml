@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <!-- Base application theme. -->
@@ -15,6 +16,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@drawable/app_background_shape</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="Widget.Cinedex.Navigation.Button" parent="Widget.AppCompat.Button.Borderless">

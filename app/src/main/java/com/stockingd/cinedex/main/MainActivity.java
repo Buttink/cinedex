@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.stockingd.cinedex.ActivityRxJavaModule;
 import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.app.BaseActivity;
 import com.stockingd.cinedex.movie_list.MovieListFragment;
@@ -29,7 +30,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        component().mainComponenet(new MainModule(this, this)).inject(this);
+        component().mainComponent(new MainModule(this, this),
+                                  new ActivityRxJavaModule()).inject(this);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);

@@ -2,4 +2,17 @@
     <string name="app_name">Cinedex</string>
     <string name="navigation_drawer_open">Open Navigation Menu</string>
     <string name="navigation_drawer_closed">Close Navigation Menu</string>
+
+    <string name="backdrop_description">Movie Backdrop</string>
+    <string name="poster_description">Movie Poster</string>
+
+    <string name="tmdb_attribution">Powered by The Movie DB</string>
+
+    <string name="drawer.highest_rated">Highest Rated</string>
+    <string name="drawer.most_popular">Most Popular</string>
+
+    <string name="movie_details.runtime">%d min</string>
+    <string name="movie_details.rating">%.1f/10</string>
+    <string name="movie_list.error">Can\'t load movie results</string>
+    <string name="movie_list.try_again">Try Again</string>
 </resources>

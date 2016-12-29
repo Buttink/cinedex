@@ -4,6 +4,8 @@ import com.stockingd.cinedex.drawer.DrawerComponent;
 import com.stockingd.cinedex.drawer.DrawerModule;
 import com.stockingd.cinedex.main.MainComponent;
 import com.stockingd.cinedex.main.MainModule;
+import com.stockingd.cinedex.movie_details.MovieDetailsActivityComponent;
+import com.stockingd.cinedex.movie_details.MovieDetailsActivityModule;
 import com.stockingd.cinedex.movie_list.MovieListComponent;
 import com.stockingd.cinedex.movie_list.MovieListModule;
 import com.stockingd.cinedex.tmdb.TheMovieDbModule;
@@ -24,5 +26,7 @@ public interface CinedexComponent {
 
     DrawerComponent drawerComponent(DrawerModule drawerModule);
 
-    MainComponent mainComponenet(MainModule mainModule);
+    MainComponent mainComponent(MainModule mainModule, ActivityRxJavaModule activityRxJavaModule);
+
+    MovieDetailsActivityComponent movieDetailsActivityComponent(MovieDetailsActivityModule movieDetailsActivityModule);
 }

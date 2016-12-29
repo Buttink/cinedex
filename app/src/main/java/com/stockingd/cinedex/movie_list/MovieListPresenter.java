@@ -62,6 +62,6 @@ public class MovieListPresenter implements MovieListContract.Presenter {
 
     @Override
     public void onItemClicked(long movieId) {
-//        view.showMovieDetails(movieId);
+        view.showMovieDetails(movieId);
     }
 }

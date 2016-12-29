@@ -26,11 +26,12 @@
         >
 
         <ImageView
-            android:id="@+id/poster"
+            android:id="@+id/poster_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="movie poster"
-            tools:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/poster_description"
+            android:transitionName="poster"
+            app:srcCompat="@drawable/ic_placeholde_2_3"
             >
 
         </ImageView>
@@ -69,7 +70,7 @@
         android:layout_height="301dp"
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp"
-        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteX="-23dp"
         tools:layout_editor_absoluteY="0dp"
         />
 

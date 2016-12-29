@@ -27,7 +27,7 @@ public class MovieListViewHolder extends BindingViewHolder<MovieListItemModel> {
     private static final String TAG = "MovieListViewHolder";
 
     @BindView(R.id.item) View item;
-    @BindView(R.id.poster) ImageView poster;
+    @BindView(R.id.poster_layout) ImageView poster;
     @BindView(R.id.title) TextView title;
     @BindView(R.id.rating) TextView rating;
 
@@ -50,13 +50,17 @@ public class MovieListViewHolder extends BindingViewHolder<MovieListItemModel> {
 
     @Override
     public void bind(MovieListItemModel data) {
-        itemView.setOnClickListener(v -> movieListPresenter.onItemClicked(data.id()));
+        itemView.setOnClickListener(v -> {
+            movieListPresenter.onItemClicked(data.id());
+
+        });
         posterSubscription.unsubscribe();
         posterSubscription = data.posterPath().map(pp -> {
             return theMovieDbImageService.imageUri(poster, pp)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(uri -> {
                         picasso.load(uri)
+                                .placeholder(R.drawable.ic_placeholde_2_3)
                                 .fit()
                                 .into(poster);
                     }, error -> {

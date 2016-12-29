@@ -1,4 +1,4 @@
-package com.stockingd.cinedex.drawer;
+package com.stockingd.cinedex.movie_details.fragment;
 
 import com.stockingd.cinedex.FragmentRxJavaModule;
 import com.stockingd.cinedex.PerFragment;
@@ -7,10 +7,10 @@ import dagger.Subcomponent;
 
 @PerFragment
 @Subcomponent(modules = {
-        DrawerModule.class,
         FragmentRxJavaModule.class,
+        MovieDetailsModule.class,
 })
-public interface DrawerComponent {
+public interface MovieDetailsFragmentComponent {
 
-    void inject(DrawerFragment drawerFragment);
+    void inject(MovieDetailsFragment movieDetailsFragment);
 }

@@ -1,6 +1,7 @@
 package com.stockingd.cinedex.movie_list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,12 +17,16 @@ import android.view.WindowManager;
 
 import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.app.BaseFragment;
+import com.stockingd.cinedex.movie_details.MovieDetailsActivity;
+import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragment;
+import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragmentArgs;
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolder;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolderFactory;
 import com.stockingd.cinedex.utils.Units;
 import com.stockingd.cinedex.widget.BindingListAdapter;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -126,13 +131,18 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
 
     @Override
     public void onError() {
+        adapter.ifPresent(adapter -> {
+            adapter.updateModel(Collections.emptyList());
+        });
         swipeRefreshLayout.setRefreshing(false);
         error.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void showMovieDetails() {
-
+    public void showMovieDetails(long movieId) {
+        Intent intent = new Intent(getContext().getApplicationContext(), MovieDetailsActivity.class);
+        intent.putExtra(MovieDetailsFragment.EXTRA_ARGS, MovieDetailsFragmentArgs.create(movieId));
+        startActivity(intent);
     }
 
     @Override

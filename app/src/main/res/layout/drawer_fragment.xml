@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_blue_grey_900"
+    android:orientation="vertical"
     >
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         >
 
         <LinearLayout
@@ -20,21 +21,30 @@
 
             <Button
                 android:id="@+id/most_popular"
-                android:drawableStart="@drawable/ic_popular_white_24dp"
-                android:text="Most Popular"
                 style="@style/Widget.Cinedex.Navigation.Button"
+                android:drawableStart="@drawable/ic_popular_white_24dp"
+                android:text="@string/drawer.most_popular"
                 />
 
 
             <Button
                 android:id="@+id/highest_rated"
-                android:drawableStart="@drawable/ic_rating_white_24dp"
-                android:text="Highest Rated"
                 style="@style/Widget.Cinedex.Navigation.Button"
+                android:drawableStart="@drawable/ic_rating_white_24dp"
+                android:text="@string/drawer.highest_rated"
                 />
 
         </LinearLayout>
 
     </ScrollView>
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/tmdb_attribution"
+        android:padding="16dp"
+        android:src="@drawable/ic_the_movie_db_attribution"
+        android:tint="#01d277"
+        />
 
 </LinearLayout>

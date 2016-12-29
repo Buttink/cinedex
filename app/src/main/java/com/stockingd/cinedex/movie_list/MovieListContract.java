@@ -8,7 +8,7 @@ public interface MovieListContract {
 
     interface View {
         void onModelUpdate(List<MovieListItemModel> model);
-        void showMovieDetails();
+        void showMovieDetails(long movieId);
         void showProgress();
         void onError();
     }

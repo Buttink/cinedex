@@ -1,10 +1,12 @@
 package com.stockingd.cinedex.tmdb;
 
 import com.stockingd.cinedex.tmdb.json.GetConfiguration;
+import com.stockingd.cinedex.tmdb.json.GetMovieDetails;
 import com.stockingd.cinedex.tmdb.json.GetPopularMovieResults;
 import com.stockingd.cinedex.tmdb.json.GetTopRatedMovieResults;
 
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 
 public interface TheMovieDbService {
@@ -18,6 +20,6 @@ public interface TheMovieDbService {
     @GET("/3/movie/top_rated")
     Observable<GetTopRatedMovieResults> getTopRatedMovies();
 
-//    @GET("/movie/{movie_id}")
-//    List<MovieDetails> getMovieDetails(@Path("movie_id") int movieId);
+    @GET("/3/movie/{movie_id}")
+    Observable<GetMovieDetails> getMovieDetails(@Path("movie_id") long movieId);
 }

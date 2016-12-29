@@ -7,11 +7,11 @@ import dagger.Provides;
 import rx.subscriptions.CompositeSubscription;
 
 @Module
-public class FragmentRxJavaModule {
+public class ActivityRxJavaModule {
 
     @Provides
-    @PerFragment
-    @Named("fragment")
+    @PerActivity
+    @Named("activity")
     CompositeSubscription providesCompositeSubscription() {
         return new CompositeSubscription();
     }

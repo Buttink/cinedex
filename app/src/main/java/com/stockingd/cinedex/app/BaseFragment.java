@@ -8,12 +8,13 @@ import com.stockingd.cinedex.CinedexComponent;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import rx.subscriptions.CompositeSubscription;
 
 public class BaseFragment extends Fragment {
 
-    @Inject CompositeSubscription compositeSubscription;
+    @Inject @Named("fragment") protected CompositeSubscription compositeSubscription;
 
     protected Optional<CinedexApplication> application() {
         return Optional.ofNullable(getActivity()).map(a -> {

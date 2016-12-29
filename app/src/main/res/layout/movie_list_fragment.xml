@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Can't load movie results"
+            android:text="@string/movie_list.error"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
             />
 
@@ -47,7 +47,7 @@
             android:id="@+id/try_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Try Again"
+            android:text="@string/movie_list.try_again"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             />
 
