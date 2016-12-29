@@ -1,7 +1,5 @@
 package jp.yokomark.optional;
 
-import android.support.annotation.NonNull;
-
 /**
  * Backport of Function interface in Java8.
  * @author KeithYokoma

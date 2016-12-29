@@ -6,11 +6,11 @@ import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
 
 import java.util.List;
-import jp.yokomark.optional.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import jp.yokomark.optional.Optional;
 import rx.Observable;
 
 @Singleton

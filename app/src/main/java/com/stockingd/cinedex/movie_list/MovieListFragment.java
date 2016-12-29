@@ -28,13 +28,13 @@ import com.stockingd.cinedex.widget.BindingListAdapter;
 
 import java.util.Collections;
 import java.util.List;
-import jp.yokomark.optional.Optional;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jp.yokomark.optional.Optional;
 
 public class MovieListFragment extends BaseFragment implements MovieListContract.View {
 
