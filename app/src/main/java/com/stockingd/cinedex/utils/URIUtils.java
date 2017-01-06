@@ -1,8 +1,8 @@
 package com.stockingd.cinedex.utils;
 
-import java.net.URI;
+import com.stockingd.optional.java.util.Optional;
 
-import jp.yokomark.optional.Optional;
+import java.net.URI;
 
 public class URIUtils {
 

@@ -4,11 +4,11 @@ import android.support.v4.app.Fragment;
 
 import com.stockingd.cinedex.CinedexApplication;
 import com.stockingd.cinedex.CinedexComponent;
+import com.stockingd.optional.java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import jp.yokomark.optional.Optional;
 import rx.subscriptions.CompositeSubscription;
 
 public class BaseFragment extends Fragment {

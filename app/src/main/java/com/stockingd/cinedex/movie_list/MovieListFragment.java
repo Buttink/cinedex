@@ -25,6 +25,7 @@ import com.stockingd.cinedex.movie_list.item.MovieListViewHolder;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolderFactory;
 import com.stockingd.cinedex.utils.Units;
 import com.stockingd.cinedex.widget.BindingListAdapter;
+import com.stockingd.optional.java.util.Optional;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,7 +35,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.yokomark.optional.Optional;
 
 public class MovieListFragment extends BaseFragment implements MovieListContract.View {
 

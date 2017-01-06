@@ -4,13 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
+import com.stockingd.optional.java.util.Optional;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import jp.yokomark.optional.Optional;
 import rx.Observable;
 
 @Singleton

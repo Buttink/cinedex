@@ -2,8 +2,7 @@ package com.stockingd.cinedex.movie_list.item;
 
 import com.google.auto.value.AutoValue;
 import com.stockingd.cinedex.widget.Identifiable;
-
-import jp.yokomark.optional.Optional;
+import com.stockingd.optional.java.util.Optional;
 
 @AutoValue
 public abstract class MovieListItemModel implements Identifiable {
