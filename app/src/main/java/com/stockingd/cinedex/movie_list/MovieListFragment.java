@@ -25,7 +25,7 @@ import com.stockingd.cinedex.movie_list.item.MovieListViewHolder;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolderFactory;
 import com.stockingd.cinedex.utils.Units;
 import com.stockingd.cinedex.widget.BindingListAdapter;
-import com.stockingd.optional.java.util.Optional;
+import com.github.dmstocking.optional.java.util.Optional;
 
 import java.util.Collections;
 import java.util.List;

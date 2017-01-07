@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
-import com.stockingd.optional.java.util.Optional;
+import com.github.dmstocking.optional.java.util.Optional;
 
 import java.util.List;
 

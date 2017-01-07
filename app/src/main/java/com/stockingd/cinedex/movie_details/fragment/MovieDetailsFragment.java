@@ -19,7 +19,7 @@ import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.movie_details.BackdropView;
 import com.stockingd.cinedex.movie_details.MovieDetailsActivity;
 import com.stockingd.cinedex.tmdb.TheMovieDbImagePresenter;
-import com.stockingd.optional.java.util.Optional;
+import com.github.dmstocking.optional.java.util.Optional;
 
 import javax.inject.Inject;
 

@@ -1,6 +1,6 @@
 package com.stockingd.cinedex.utils;
 
-import com.stockingd.optional.java.util.Optional;
+import com.github.dmstocking.optional.java.util.Optional;
 
 import java.net.URI;
 

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 
 import com.stockingd.cinedex.CinedexApplication;
 import com.stockingd.cinedex.CinedexComponent;
-import com.stockingd.optional.java.util.Optional;
+import com.github.dmstocking.optional.java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
