@@ -2,7 +2,7 @@ package com.stockingd.cinedex.movie_list;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,13 +20,13 @@ public class MovieListModule {
     }
 
     @Provides
-    @PerFragment
+    @ViewScope
     MovieListContract.View providesMovieListContractView() {
         return view;
     }
 
     @Provides
-    @PerFragment
+    @ViewScope
     MovieListFragmentArgs providesMovieListFragmentArgs() {
         return args;
     }

@@ -2,7 +2,7 @@ package com.stockingd.cinedex.movie_details.fragment;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
 
 import java.text.DateFormat;
@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
-@PerFragment
+@ViewScope
 public class MovieDetailsService {
 
     @NonNull private final TheMovieDbService theMovieDbService;
@@ -29,23 +29,24 @@ public class MovieDetailsService {
     }
 
     public Observable<MovieDetailsModel> getModel(long movieId) {
-        return theMovieDbService.getMovieDetails(movieId).map(details -> {
-            int year;
+        return theMovieDbService.getMovieDetailsWithExtras(movieId).map(details -> {
+            Date release = new Date(0);
+            int year = 0;
             try {
-                Date date = simpleFormat.parse(details.releaseDate);
+                release = simpleFormat.parse(details.releaseDate);
                 Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
+                calendar.setTime(release);
                 year = calendar.get(Calendar.YEAR);
-            } catch (ParseException e) {
-                year = 0;
+            } catch (ParseException ignore) {
             }
 
             return MovieDetailsModel.create(details.backdropPath,
                                             details.posterPath,
                                             details.title,
                                             year,
+                                            release,
                                             details.runtime,
-                                            details.voteAverage,
+                                            details.voteAverage / 10.0f,
                                             details.overview);
         });
     }

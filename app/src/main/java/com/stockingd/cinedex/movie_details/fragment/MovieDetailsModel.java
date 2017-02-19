@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import com.google.auto.value.AutoValue;
 import com.github.dmstocking.optional.java.util.Optional;
 
+import java.util.Date;
+
 @AutoValue
 public abstract class MovieDetailsModel {
 
@@ -12,6 +14,7 @@ public abstract class MovieDetailsModel {
                                            @Nullable String posterPath,
                                            String title,
                                            int year,
+                                           @Nullable Date release,
                                            int runtime,
                                            float rating,
                                            String overview) {
@@ -19,6 +22,7 @@ public abstract class MovieDetailsModel {
                                                Optional.ofNullable(posterPath),
                                                title,
                                                year,
+                                               Optional.ofNullable(release),
                                                runtime,
                                                rating,
                                                overview);
@@ -28,6 +32,7 @@ public abstract class MovieDetailsModel {
     public abstract Optional<String> posterPath();
     public abstract String title();
     public abstract int year();
+    public abstract Optional<Date> release();
     public abstract int runtime();
     public abstract float rating();
     public abstract String overview();

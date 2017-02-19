@@ -4,10 +4,10 @@ public interface MovieDetailsContract {
 
     interface View {
         void onModel(MovieDetailsModel model);
-        void onError();
     }
 
     interface Presenter {
         void onResume();
+        void onPause();
     }
 }

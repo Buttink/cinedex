@@ -1,11 +1,11 @@
 package com.stockingd.cinedex.drawer;
 
 import com.stockingd.cinedex.FragmentRxJavaModule;
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 
 import dagger.Subcomponent;
 
-@PerFragment
+@ViewScope
 @Subcomponent(modules = {
         DrawerModule.class,
         FragmentRxJavaModule.class,

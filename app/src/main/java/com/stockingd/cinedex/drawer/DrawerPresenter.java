@@ -2,7 +2,7 @@ package com.stockingd.cinedex.drawer;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 import com.stockingd.cinedex.drawer.event.ShowHighestRatedEvent;
 import com.stockingd.cinedex.drawer.event.ShowMostPopularEvent;
 
@@ -10,7 +10,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
-@PerFragment
+@ViewScope
 public class DrawerPresenter implements DrawerContract.Presenter {
 
     @NonNull private final EventBus eventBus;

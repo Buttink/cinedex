@@ -70,7 +70,7 @@
         android:layout_height="301dp"
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp"
-        tools:layout_editor_absoluteX="-23dp"
+        tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="0dp"
         />
 

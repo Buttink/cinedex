@@ -3,6 +3,7 @@
     <string name="navigation_drawer_open">Open Navigation Menu</string>
     <string name="navigation_drawer_closed">Close Navigation Menu</string>
 
+    <string name="trailer_description">Movie Trailer</string>
     <string name="backdrop_description">Movie Backdrop</string>
     <string name="poster_description">Movie Poster</string>
 
@@ -11,8 +12,12 @@
     <string name="drawer.highest_rated">Highest Rated</string>
     <string name="drawer.most_popular">Most Popular</string>
 
+    <string name="movie_details.title">%1$s (%2$d)</string>
     <string name="movie_details.runtime">%d min</string>
     <string name="movie_details.rating">%.1f/10</string>
     <string name="movie_list.error">Can\'t load movie results</string>
     <string name="movie_list.try_again">Try Again</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium arcu at diam luctus, ac ultrices libero congue. Aenean vestibulum sit amet ipsum id pulvinar. Donec eu velit fermentum, cursus nisi vel, euismod est. Duis sit amet molestie mi, elementum fringilla purus. Aliquam massa dolor, ornare sed porta vel, auctor in ex. Integer sollicitudin elit nec rutrum posuere. Ut turpis est, hendrerit id eros sit amet, euismod luctus nulla. Donec hendrerit purus ut consectetur vehicula. Praesent sed tristique risus, eget faucibus magna. Donec interdum ac odio sed fringilla. Ut est dolor, aliquam nec tortor et, facilisis gravida nunc. Vestibulum quis risus sollicitudin, lobortis neque nec, tristique nibh. Quisque consequat maximus ultricies. Suspendisse dignissim enim erat, tempus mattis libero lobortis vitae.</string>
+
 </resources>

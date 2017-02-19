@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BindingListAdapter<T extends Identifiable,
+public abstract class BindingListAdapter<T extends Sameable<T>,
                                          S extends BindingViewHolder<T>>
         extends RecyclerView.Adapter<S> {
 
@@ -30,7 +30,7 @@ public abstract class BindingListAdapter<T extends Identifiable,
             public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
                 T old = model.get(oldItemPosition);
                 T present = newModel.get(newItemPosition);
-                return old.id() == present.id();
+                return old.isSame(present);
             }
 
             @Override

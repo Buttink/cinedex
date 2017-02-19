@@ -19,7 +19,7 @@ import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.app.BaseFragment;
 import com.stockingd.cinedex.movie_details.MovieDetailsActivity;
 import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragment;
-import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragmentArgs;
+import com.stockingd.cinedex.movie_details.MovieDetailsActivityArgs;
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolder;
 import com.stockingd.cinedex.movie_list.item.MovieListViewHolderFactory;
@@ -141,7 +141,7 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     @Override
     public void showMovieDetails(long movieId) {
         Intent intent = new Intent(getContext().getApplicationContext(), MovieDetailsActivity.class);
-        intent.putExtra(MovieDetailsFragment.EXTRA_ARGS, MovieDetailsFragmentArgs.create(movieId));
+        intent.putExtra(MovieDetailsActivity.EXTRA_ARGS, MovieDetailsActivityArgs.create(movieId));
         startActivity(intent);
     }
 

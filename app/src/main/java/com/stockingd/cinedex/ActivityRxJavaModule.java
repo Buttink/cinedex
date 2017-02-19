@@ -10,7 +10,7 @@ import rx.subscriptions.CompositeSubscription;
 public class ActivityRxJavaModule {
 
     @Provides
-    @PerActivity
+    @ViewScope
     @Named("activity")
     CompositeSubscription providesCompositeSubscription() {
         return new CompositeSubscription();

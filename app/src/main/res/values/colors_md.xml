@@ -298,4 +298,12 @@ http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
     <color name="md_blue_grey_800">#37474F</color>
     <color name="md_blue_grey_900">#263238</color>
 
+    <color name="md_black_87">#DE000000</color>
+    <color name="md_black_54">#8A000000</color>
+    <color name="md_black_26">#61000000</color>
+
+    <color name="md_white_100">#FFFFFFFF</color>
+    <color name="md_white_50">#80FFFFFF</color>
+    <color name="md_white_30">#46FFFFFF</color>
+
 </resources>

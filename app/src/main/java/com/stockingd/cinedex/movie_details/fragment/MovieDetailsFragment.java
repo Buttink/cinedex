@@ -1,25 +1,22 @@
 package com.stockingd.cinedex.movie_details.fragment;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.stockingd.cinedex.R;
-import com.stockingd.cinedex.app.BaseFragment;
-import com.stockingd.cinedex.movie_details.BackdropView;
+import com.stockingd.cinedex.app.BaseFragment2;
 import com.stockingd.cinedex.movie_details.MovieDetailsActivity;
 import com.stockingd.cinedex.tmdb.TheMovieDbImagePresenter;
-import com.github.dmstocking.optional.java.util.Optional;
+
+import java.text.DateFormat;
 
 import javax.inject.Inject;
 
@@ -28,42 +25,38 @@ import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
 
-public class MovieDetailsFragment extends BaseFragment implements MovieDetailsContract.View {
+public class MovieDetailsFragment extends BaseFragment2 implements MovieDetailsContract.View {
 
-    public static final String EXTRA_ARGS = "EXTRA_ARGS";
-
-    private View root;
-    @BindView(R.id.refresh) SwipeRefreshLayout swipeRefreshLayout;
+    public static final String ARGS_KEY = "args";
     @BindView(R.id.poster) ImageView poster;
-    @BindView(R.id.year) TextView year;
+    @BindView(R.id.title) TextView title;
     @BindView(R.id.runtime) TextView runtime;
-    @BindView(R.id.rating) TextView rating;
+    @BindView(R.id.release_date) TextView releaseDate;
+    @BindView(R.id.rating) RatingBar rating;
     @BindView(R.id.overview) TextView overview;
 
     @Inject MovieDetailsPresenter presenter;
     @Inject TheMovieDbImagePresenter theMovieDbImagePresenter;
-    @Inject BackdropView backdropView;
 
-    @NonNull private Subscription backdropSubscription = Subscriptions.empty();
     @NonNull private Subscription posterSubscriptions = Subscriptions.empty();
 
-    @NonNull private Optional<Snackbar> snackbar = Optional.empty();
+    public static MovieDetailsFragment create(long movieId) {
+        MovieDetailsFragment fragment = new MovieDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ARGS_KEY, MovieDetailsFragmentArgs.create(movieId));
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Intent intent = getActivity().getIntent();
-        MovieDetailsFragmentArgs args = null;
-        if (intent != null) {
-            args = intent.getParcelableExtra(EXTRA_ARGS);
-        }
-        MovieDetailsFragmentArgs finalArgs = args;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle arguments = getArguments();
+        MovieDetailsFragmentArgs args = arguments.getParcelable(ARGS_KEY);
+
         component().ifPresent(c -> {
-            if (finalArgs != null && getActivity() instanceof MovieDetailsActivity) {
-                ((MovieDetailsActivity) getActivity()).activityComponent.get()
-                        .movieDetailsFragmentComponent(new MovieDetailsModule(this, finalArgs))
-                        .inject(this);
-            }
+            c.movieDetailsFragmentComponent(new MovieDetailsFragmentModule(this, args))
+                    .inject(this);
         });
     }
 
@@ -78,52 +71,38 @@ public class MovieDetailsFragment extends BaseFragment implements MovieDetailsCo
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        root = view;
         ButterKnife.bind(this, view);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            swipeRefreshLayout.setRefreshing(true);
-            presenter.onResume();
-        });
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        swipeRefreshLayout.setRefreshing(true);
         presenter.onResume();
     }
 
     @Override
     public void onModel(MovieDetailsModel model) {
-        snackbar.ifPresent(s -> {
-            s.dismiss();
-        });
-        swipeRefreshLayout.setRefreshing(false);
         Resources resources = getResources();
-        backdropSubscription.unsubscribe();
-        model.backdropPath().ifPresent(backdropPath -> {
-            backdropView.setBackdrop(backdropPath);
-        });
         posterSubscriptions.unsubscribe();
-        posterSubscriptions = model.posterPath().map(posterPath -> {
-            return theMovieDbImagePresenter.loadPoster(posterPath, poster).subscribe();
+        posterSubscriptions = model.posterPath()
+                .map(posterPath -> {
+                    return theMovieDbImagePresenter.loadPoster(posterPath, poster)
+                            .subscribe();
         }).orElse(Subscriptions.empty());
         ((MovieDetailsActivity) getActivity()).setToolbarTitle(model.title());
-        year.setText(String.valueOf(model.year()));
+        title.setText(resources.getString(R.string.movie_details_title, model.title(), model.year()));
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
+        model.release().ifPresentOrElse(
+                date -> releaseDate.setText(df.format(date)),
+                () -> releaseDate.setText(""));
         runtime.setText(resources.getString(R.string.movie_details_runtime, model.runtime()));
-        rating.setText(resources.getString(R.string.movie_details_rating, model.rating()));
+        rating.setRating(model.rating() * 5);
         overview.setText(model.overview());
     }
 
     @Override
-    public void onError() {
-        swipeRefreshLayout.setRefreshing(false);
-        snackbar.ifPresent(s -> {
-            s.dismiss();
-        });
-        Snackbar snackbar = Snackbar.make(root, "Can't fetch movie details.", Snackbar.LENGTH_INDEFINITE);
-        snackbar.show();
-        this.snackbar = Optional.of(snackbar);
+    public void onPause() {
+        super.onPause();
+        presenter.onPause();
     }
 }

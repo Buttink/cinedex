@@ -4,11 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
-import com.stockingd.cinedex.PerActivity;
+import com.stockingd.cinedex.ViewScope;
 
 import javax.inject.Inject;
 
-@PerActivity
+@ViewScope
 public class ActivityUtils {
 
     @NonNull private final AppCompatActivity appCompatActivity;

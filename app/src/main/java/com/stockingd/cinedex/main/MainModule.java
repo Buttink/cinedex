@@ -3,7 +3,7 @@ package com.stockingd.cinedex.main;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-import com.stockingd.cinedex.PerActivity;
+import com.stockingd.cinedex.ViewScope;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,13 +20,13 @@ public class MainModule {
     }
 
     @Provides
-    @PerActivity
+    @ViewScope
     MainContract.View providesMainContractView() {
         return view;
     }
 
     @Provides
-    @PerActivity
+    @ViewScope
     AppCompatActivity providesActivity() {
         return activity;
     }

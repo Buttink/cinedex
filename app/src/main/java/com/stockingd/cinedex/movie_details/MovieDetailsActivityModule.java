@@ -2,7 +2,7 @@ package com.stockingd.cinedex.movie_details;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerActivity;
+import com.stockingd.cinedex.ViewScope;
 
 import dagger.Module;
 import dagger.Provides;
@@ -10,15 +10,25 @@ import dagger.Provides;
 @Module
 public class MovieDetailsActivityModule {
 
-    @NonNull private final BackdropView backdropView;
 
-    public MovieDetailsActivityModule(@NonNull BackdropView backdropView) {
-        this.backdropView = backdropView;
+    @NonNull private final MovieDetailsActivityContract.View view;
+    @NonNull private final MovieDetailsActivityArgs args;
+
+    public MovieDetailsActivityModule(@NonNull MovieDetailsActivityContract.View view,
+                                      @NonNull MovieDetailsActivityArgs args) {
+        this.view = view;
+        this.args = args;
     }
 
     @Provides
-    @PerActivity
-    BackdropView providesBackdropView() {
-        return backdropView;
+    @ViewScope
+    MovieDetailsActivityArgs providesMovieDetailsActivityArgs() {
+        return args;
+    }
+
+    @Provides
+    @ViewScope
+    MovieDetailsActivityContract.View getView() {
+        return view;
     }
 }

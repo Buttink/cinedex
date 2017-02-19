@@ -2,31 +2,31 @@ package com.stockingd.cinedex.movie_details.fragment;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 
 import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class MovieDetailsModule {
+public class MovieDetailsFragmentModule {
 
     @NonNull private final MovieDetailsContract.View view;
     @NonNull private final MovieDetailsFragmentArgs args;
 
-    public MovieDetailsModule(@NonNull MovieDetailsContract.View view,
-                              @NonNull MovieDetailsFragmentArgs args) {
+    public MovieDetailsFragmentModule(@NonNull MovieDetailsContract.View view,
+                                      @NonNull MovieDetailsFragmentArgs args) {
         this.view = view;
         this.args = args;
     }
 
     @Provides
-    @PerFragment
+    @ViewScope
     MovieDetailsContract.View providesMovieDetailsContractView() {
         return view;
     }
 
     @Provides
-    @PerFragment
+    @ViewScope
     MovieDetailsFragmentArgs providesMovieDetailsFragmentArgs() {
         return args;
     }

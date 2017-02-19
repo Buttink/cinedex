@@ -1,13 +1,13 @@
 package com.stockingd.cinedex.movie_details;
 
 import com.stockingd.cinedex.ActivityRxJavaModule;
-import com.stockingd.cinedex.PerActivity;
-import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragmentComponent;
-import com.stockingd.cinedex.movie_details.fragment.MovieDetailsModule;
+import com.stockingd.cinedex.ViewScope;
+import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragment;
+import com.stockingd.cinedex.movie_details.review.MovieReviewFragment;
 
 import dagger.Subcomponent;
 
-@PerActivity
+@ViewScope
 @Subcomponent(modules = {
         ActivityRxJavaModule.class,
         MovieDetailsActivityModule.class,
@@ -15,7 +15,4 @@ import dagger.Subcomponent;
 public interface MovieDetailsActivityComponent {
 
     void inject(MovieDetailsActivity activity);
-
-    MovieDetailsFragmentComponent movieDetailsFragmentComponent(
-            MovieDetailsModule movieDetailsModule);
 }

@@ -2,7 +2,7 @@ package com.stockingd.cinedex.movie_list;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.Subscriptions;
 
-@PerFragment
+@ViewScope
 public class MovieListPresenter implements MovieListContract.Presenter {
 
     @NonNull private final MovieListContract.View view;

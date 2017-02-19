@@ -10,7 +10,7 @@ import rx.subscriptions.CompositeSubscription;
 public class FragmentRxJavaModule {
 
     @Provides
-    @PerFragment
+    @ViewScope
     @Named("fragment")
     CompositeSubscription providesCompositeSubscription() {
         return new CompositeSubscription();

@@ -2,7 +2,7 @@ package com.stockingd.cinedex.main;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerActivity;
+import com.stockingd.cinedex.ViewScope;
 import com.stockingd.cinedex.drawer.event.ShowHighestRatedEvent;
 import com.stockingd.cinedex.drawer.event.ShowMostPopularEvent;
 
@@ -11,7 +11,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
 
-@PerActivity
+@ViewScope
 public class MainPresenter implements MainContract.Presenter {
 
     @NonNull private final MainContract.View view;

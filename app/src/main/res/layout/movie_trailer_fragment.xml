@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/movie_trailer_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clickable="true"
+                android:contentDescription="@string/backdrop_description"
+                android:foreground="?attr/selectableItemBackground"
+                android:tint="@color/md_grey_700"
+                android:tintMode="multiply"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_placeholder_16_9"
+                />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:tint="?attr/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_trailer_image"
+                app:layout_constraintLeft_toLeftOf="@+id/movie_trailer_image"
+                app:layout_constraintRight_toRightOf="@+id/movie_trailer_image"
+                app:layout_constraintTop_toTopOf="@+id/movie_trailer_image"
+                app:srcCompat="@drawable/ic_play_arrow_black_60dp"
+                />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

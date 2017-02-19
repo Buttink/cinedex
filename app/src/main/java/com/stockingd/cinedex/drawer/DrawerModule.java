@@ -2,7 +2,7 @@ package com.stockingd.cinedex.drawer;
 
 import android.support.annotation.NonNull;
 
-import com.stockingd.cinedex.PerFragment;
+import com.stockingd.cinedex.ViewScope;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,14 +18,14 @@ public class DrawerModule {
     }
 
     @Provides
-    @PerFragment
+    @ViewScope
     DrawerContract.View providesDrawerContractView() {
         return view;
     }
 
 
     @Provides
-    @PerFragment
+    @ViewScope
     CompositeSubscription providesCompositeSubscription() {
         return new CompositeSubscription();
     }
