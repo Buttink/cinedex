@@ -45,6 +45,9 @@ public class MovieListPresenter implements MovieListContract.Presenter {
             case HighestRated:
                 observable = movieListService.getHighestRatedMoviesModel();
                 break;
+            case Favorites:
+                observable = movieListService.getFavoritesMoviesModel();
+                break;
         }
         modelSubscription = observable
                 .observeOn(AndroidSchedulers.mainThread())

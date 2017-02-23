@@ -10,24 +10,29 @@ import java.util.Date;
 @AutoValue
 public abstract class MovieDetailsModel {
 
-    public static MovieDetailsModel create(@Nullable String backdropPath,
+    public static MovieDetailsModel create(int id,
+                                           @Nullable String backdropPath,
                                            @Nullable String posterPath,
                                            String title,
                                            int year,
                                            @Nullable Date release,
                                            int runtime,
                                            float rating,
-                                           String overview) {
-        return new AutoValue_MovieDetailsModel(Optional.ofNullable(backdropPath),
+                                           String overview,
+                                           boolean favorite) {
+        return new AutoValue_MovieDetailsModel(id,
+                                               Optional.ofNullable(backdropPath),
                                                Optional.ofNullable(posterPath),
                                                title,
                                                year,
                                                Optional.ofNullable(release),
                                                runtime,
                                                rating,
-                                               overview);
+                                               overview,
+                                               favorite);
     }
 
+    public abstract int id();
     public abstract Optional<String> backdropPath();
     public abstract Optional<String> posterPath();
     public abstract String title();
@@ -36,4 +41,5 @@ public abstract class MovieDetailsModel {
     public abstract int runtime();
     public abstract float rating();
     public abstract String overview();
+    public abstract boolean favorite();
 }

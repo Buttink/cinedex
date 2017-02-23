@@ -2,6 +2,7 @@ package com.stockingd.cinedex.main;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -44,7 +45,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle.syncState();
-        presenter.onCreate();
+        presenter.onCreate(savedInstanceState != null);
     }
 
     @Override
@@ -63,6 +64,12 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     public void showHighestRated() {
         swapIn(MovieListFragmentArgs.Mode.HighestRated);
         activityUtils.setActionBarTitle("Highest Rated");
+    }
+
+    @Override
+    public void showFavorites() {
+        swapIn(MovieListFragmentArgs.Mode.Favorites);
+        activityUtils.setActionBarTitle("Favorites");
     }
 
     private void swapIn(MovieListFragmentArgs.Mode mode) {

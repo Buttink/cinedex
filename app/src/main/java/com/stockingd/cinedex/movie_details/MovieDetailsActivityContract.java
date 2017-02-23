@@ -1,5 +1,7 @@
 package com.stockingd.cinedex.movie_details;
 
+import java.net.URI;
+
 public interface MovieDetailsActivityContract {
 
     interface Presenter {
@@ -11,5 +13,7 @@ public interface MovieDetailsActivityContract {
     interface View {
         void onModel(MovieDetailsActivityModel model);
         void onError();
+
+        void onLaunchReviewEvent(URI reviewUri);
     }
 }

@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Dark"
         >
+
         <activity
             android:name=".main.MainActivity"
             >
@@ -29,6 +30,11 @@
             android:parentActivityName=".main.MainActivity"
             >
         </activity>
+
+        <provider
+            android:authorities="com.stockingd.cinedex.favorite.data.FavoritesProvider"
+            android:name=".favorite.data.generated.FavoritesProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>

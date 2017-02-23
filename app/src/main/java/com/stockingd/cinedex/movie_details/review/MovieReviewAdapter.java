@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 
 import com.stockingd.cinedex.ViewScope;
 import com.stockingd.cinedex.R;
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewModel;
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewViewHolder;
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewViewHolderFactory;
 import com.stockingd.cinedex.widget.BindingListAdapter;
 
 import javax.inject.Inject;

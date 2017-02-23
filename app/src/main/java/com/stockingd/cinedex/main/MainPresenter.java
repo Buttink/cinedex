@@ -3,6 +3,7 @@ package com.stockingd.cinedex.main;
 import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.ViewScope;
+import com.stockingd.cinedex.drawer.event.ShowFavoritesEvent;
 import com.stockingd.cinedex.drawer.event.ShowHighestRatedEvent;
 import com.stockingd.cinedex.drawer.event.ShowMostPopularEvent;
 
@@ -14,6 +15,8 @@ import javax.inject.Inject;
 @ViewScope
 public class MainPresenter implements MainContract.Presenter {
 
+    public enum View { MOST_POPULAR, HIGHEST_RATED, FAVORITES }
+
     @NonNull private final MainContract.View view;
     @NonNull private final EventBus eventBus;
 
@@ -24,8 +27,10 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void onCreate() {
-        view.showMostPopular();
+    public void onCreate(boolean restored) {
+        if (!restored) {
+            view.showMostPopular();
+        }
     }
 
     @Override
@@ -42,6 +47,12 @@ public class MainPresenter implements MainContract.Presenter {
     @Subscribe
     public void onHighestRatedPopular(ShowHighestRatedEvent event) {
         view.showHighestRated();
+        view.closeDrawer();
+    }
+
+    @Subscribe
+    public void onShowFavories(ShowFavoritesEvent event) {
+        view.showFavorites();
         view.closeDrawer();
     }
 

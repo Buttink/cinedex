@@ -2,7 +2,7 @@ package com.stockingd.cinedex.movie_details;
 
 import com.google.auto.value.AutoValue;
 import com.stockingd.cinedex.movie_details.fragment.MovieDetailsModel;
-import com.stockingd.cinedex.movie_details.review.MovieReviewModel;
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewModel;
 
 import java.util.List;
 

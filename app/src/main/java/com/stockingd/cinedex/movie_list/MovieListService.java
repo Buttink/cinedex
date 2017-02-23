@@ -2,6 +2,7 @@ package com.stockingd.cinedex.movie_list;
 
 import android.support.annotation.NonNull;
 
+import com.stockingd.cinedex.favorite.FavoritesRepository;
 import com.stockingd.cinedex.movie_list.item.MovieListItemModel;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
 import com.github.dmstocking.optional.java.util.Optional;
@@ -16,10 +17,13 @@ import rx.Observable;
 @Singleton
 public class MovieListService {
 
+    @NonNull private final FavoritesRepository favoritesRepository;
     @NonNull private final TheMovieDbService theMovieDbService;
 
     @Inject
-    public MovieListService(@NonNull TheMovieDbService theMovieDbService) {
+    public MovieListService(@NonNull FavoritesRepository favoritesRepository,
+                            @NonNull TheMovieDbService theMovieDbService) {
+        this.favoritesRepository = favoritesRepository;
         this.theMovieDbService = theMovieDbService;
     }
 
@@ -31,7 +35,7 @@ public class MovieListService {
                     item.id,
                     Optional.ofNullable(item.posterPath),
                     item.title,
-                    String.valueOf(Math.round(item.voteAverage*10)/10));
+                    String.valueOf(Math.round(item.voteAverage)));
         }).toList();
     }
 
@@ -43,7 +47,20 @@ public class MovieListService {
                     item.id,
                     Optional.ofNullable(item.posterPath),
                     item.title,
-                    String.valueOf(Math.round(item.voteAverage*10)/10));
+                    String.valueOf(Math.round(item.voteAverage)));
         }).toList();
+    }
+
+    public Observable<List<MovieListItemModel>> getFavoritesMoviesModel() {
+        return favoritesRepository.getFavoritesAsync()
+                .flatMap(Observable::from)
+                .map(entity -> {
+                    return MovieListItemModel.create(
+                            entity.id(),
+                            Optional.empty(),
+                            entity.title(),
+                            String.valueOf(Math.round(entity.rating()*10)));
+                })
+                .toList();
     }
 }

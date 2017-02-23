@@ -1,9 +1,5 @@
 package com.stockingd.cinedex.drawer;
 
-/**
- * Created by buttink on 12/23/16.
- */
-
 public interface DrawerContract {
 
     interface View {
@@ -12,5 +8,6 @@ public interface DrawerContract {
     interface Presenter {
         void onMostPopularClicked();
         void onHighestRatedClicked();
+        void onFavoritesClicked();
     }
 }

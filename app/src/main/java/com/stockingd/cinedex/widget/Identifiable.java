@@ -1,6 +1,6 @@
 package com.stockingd.cinedex.widget;
 
-public interface Identifiable {
+public interface Identifiable<T> {
 
-    long id();
+    boolean identify(T other);
 }

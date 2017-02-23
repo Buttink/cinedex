@@ -1,6 +1,7 @@
 package com.stockingd.cinedex;
 
 import android.app.Application;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -17,6 +18,12 @@ public class AndroidModule {
 
     public AndroidModule(@NonNull Application application) {
         this.application = application;
+    }
+
+    @Provides
+    @Singleton
+    ContentResolver providesContentResolver() {
+        return application.getContentResolver();
     }
 
     @Provides

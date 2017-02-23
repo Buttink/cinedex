@@ -55,4 +55,9 @@ public class DrawerFragment extends BaseFragment implements DrawerContract.View 
     public void onHighestRatedClicked() {
         presenter.onHighestRatedClicked();
     }
+
+    @OnClick(R.id.favorites)
+    public void onFavoritesClicked() {
+        presenter.onFavoritesClicked();
+    }
 }

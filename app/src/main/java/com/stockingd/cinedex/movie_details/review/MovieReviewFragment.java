@@ -2,7 +2,6 @@ package com.stockingd.cinedex.movie_details.review;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.app.BaseFragment2;
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewModel;
 
 import java.util.List;
 

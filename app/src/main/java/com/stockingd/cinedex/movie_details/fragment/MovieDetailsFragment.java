@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.sackcentury.shinebuttonlib.ShineButton;
+import com.sackcentury.shinebuttonlib.ShineView;
 import com.stockingd.cinedex.R;
 import com.stockingd.cinedex.app.BaseFragment2;
 import com.stockingd.cinedex.movie_details.MovieDetailsActivity;
@@ -22,6 +24,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;
 
@@ -34,6 +38,7 @@ public class MovieDetailsFragment extends BaseFragment2 implements MovieDetailsC
     @BindView(R.id.release_date) TextView releaseDate;
     @BindView(R.id.rating) RatingBar rating;
     @BindView(R.id.overview) TextView overview;
+    @BindView(R.id.favorite) ShineButton favorite;
 
     @Inject MovieDetailsPresenter presenter;
     @Inject TheMovieDbImagePresenter theMovieDbImagePresenter;
@@ -72,6 +77,7 @@ public class MovieDetailsFragment extends BaseFragment2 implements MovieDetailsC
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        title.setSelected(true);
     }
 
     @Override
@@ -98,6 +104,12 @@ public class MovieDetailsFragment extends BaseFragment2 implements MovieDetailsC
         runtime.setText(resources.getString(R.string.movie_details_runtime, model.runtime()));
         rating.setRating(model.rating() * 5);
         overview.setText(model.overview());
+        favorite.setChecked(model.favorite());
+    }
+
+    @OnClick(R.id.favorite)
+    public void onFavoriteClicked() {
+        presenter.onFavoriteClicked(favorite.isChecked());
     }
 
     @Override

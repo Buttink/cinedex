@@ -1,5 +1,7 @@
 package com.stockingd.cinedex.movie_details.review;
 
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewModel;
+
 import java.util.List;
 
 public interface MovieReviewContract {

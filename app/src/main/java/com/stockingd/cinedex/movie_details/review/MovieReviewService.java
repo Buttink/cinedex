@@ -3,6 +3,7 @@ package com.stockingd.cinedex.movie_details.review;
 import android.support.annotation.NonNull;
 
 import com.stockingd.cinedex.ViewScope;
+import com.stockingd.cinedex.movie_details.review.item.MovieReviewModel;
 import com.stockingd.cinedex.tmdb.TheMovieDbService;
 
 import java.util.List;

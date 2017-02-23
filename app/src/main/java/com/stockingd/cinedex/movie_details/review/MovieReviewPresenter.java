@@ -33,7 +33,7 @@ public class MovieReviewPresenter implements MovieReviewContract.Presenter {
         modelSubscription = movieReviewService.getModel()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::onModel);
+                .subscribe(view::onModel, ignored -> {});
     }
 
     @Override

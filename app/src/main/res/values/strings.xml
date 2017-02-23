@@ -11,6 +11,7 @@
 
     <string name="drawer.highest_rated">Highest Rated</string>
     <string name="drawer.most_popular">Most Popular</string>
+    <string name="drawer.favorites">Favorites</string>
 
     <string name="movie_details.title">%1$s (%2$d)</string>
     <string name="movie_details.runtime">%d min</string>

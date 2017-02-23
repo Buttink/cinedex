@@ -1,10 +1,10 @@
 package com.stockingd.cinedex.movie_details;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +20,8 @@ import com.stockingd.cinedex.app.BaseActivity;
 import com.stockingd.cinedex.movie_details.fragment.MovieDetailsFragment;
 import com.stockingd.cinedex.movie_details.review.MovieReviewFragment;
 import com.stockingd.cinedex.movie_details.trailer.TrailerViewPager;
+
+import java.net.URI;
 
 import javax.inject.Inject;
 
@@ -41,7 +43,9 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsAc
     @BindView(R.id.refresh) SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.indicator) CircleIndicator indicator;
+
     @NonNull private Optional<Snackbar> snackbar = Optional.empty();
+
     private TrailerViewPager adapter;
 
     @Override
@@ -90,6 +94,7 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsAc
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             swipeRefreshLayout.setRefreshing(true);
+            presenter.onRefresh();
         });
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
@@ -128,6 +133,14 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsAc
         Snackbar snackbar = Snackbar.make(root, "Can't fetch movie details.", Snackbar.LENGTH_INDEFINITE);
         snackbar.show();
         this.snackbar = Optional.of(snackbar);
+    }
+
+    @Override
+    public void onLaunchReviewEvent(URI reviewUri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(reviewUri.toString()));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     @Override

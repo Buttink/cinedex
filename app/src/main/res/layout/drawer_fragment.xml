@@ -26,12 +26,18 @@
                 android:text="@string/drawer.most_popular"
                 />
 
-
             <Button
                 android:id="@+id/highest_rated"
                 style="@style/Widget.Cinedex.Navigation.Button"
                 android:drawableStart="@drawable/ic_rating_white_24dp"
                 android:text="@string/drawer.highest_rated"
+                />
+
+            <Button
+                android:id="@+id/favorites"
+                style="@style/Widget.Cinedex.Navigation.Button"
+                android:drawableStart="@drawable/ic_favorite_white_24dp"
+                android:text="@string/drawer.favorites"
                 />
 
         </LinearLayout>

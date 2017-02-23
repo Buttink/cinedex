@@ -1,13 +1,12 @@
-package com.stockingd.cinedex.movie_details.review;
+package com.stockingd.cinedex.movie_details.review.item;
 
 import android.os.Parcelable;
 
 import com.google.auto.value.AutoValue;
 import com.stockingd.cinedex.widget.Identifiable;
-import com.stockingd.cinedex.widget.Sameable;
 
 @AutoValue
-public abstract class MovieReviewModel implements Sameable<MovieReviewModel>, Parcelable {
+public abstract class MovieReviewModel implements Identifiable<MovieReviewModel>, Parcelable {
 
     public static MovieReviewModel create(String id, String author, String review, String url) {
         return new AutoValue_MovieReviewModel(id, author, review, url);
@@ -19,7 +18,7 @@ public abstract class MovieReviewModel implements Sameable<MovieReviewModel>, Pa
     public abstract String url();
 
     @Override
-    public boolean isSame(MovieReviewModel other) {
+    public boolean identify(MovieReviewModel other) {
         return id().equals(other.id());
     }
 }
