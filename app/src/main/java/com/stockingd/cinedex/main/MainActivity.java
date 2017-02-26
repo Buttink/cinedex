@@ -16,17 +16,21 @@ import com.stockingd.cinedex.utils.ActivityUtils;
 
 import javax.inject.Inject;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
+    public static final String INSTANCE_STATE_TITLE = "INSTANCE_STATE_TITLE";
     @Inject MainPresenter presenter;
     @Inject ActivityUtils activityUtils;
 
     @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
     @BindView(R.id.drawer) View drawer;
     @BindView(R.id.toolbar) Toolbar toolbar;
+
+    @BindString(R.string.app_name) String appName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,18 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle.syncState();
         presenter.onCreate(savedInstanceState != null);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            ActionBar actionbar = getSupportActionBar();
+            if (actionbar != null) {
+                String title = savedInstanceState.getString(INSTANCE_STATE_TITLE, appName);
+                actionbar.setTitle(title);
+            }
+        }
     }
 
     @Override
@@ -91,5 +107,14 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     protected void onPause() {
         super.onPause();
         presenter.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            outState.putString(INSTANCE_STATE_TITLE, actionBar.getTitle().toString());
+        }
     }
 }

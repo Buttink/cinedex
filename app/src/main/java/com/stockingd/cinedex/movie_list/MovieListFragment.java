@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,7 +40,8 @@ import butterknife.OnClick;
 
 public class MovieListFragment extends BaseFragment implements MovieListContract.View {
 
-    public static String EXTRA_ARGUMENTS = "EXTRA_ARGUMENTS";
+    public static final String EXTRA_ARGUMENTS = "EXTRA_ARGUMENTS";
+    public static final String INSTANCE_STATE_RECYCLER_LAYOUT = "INSTANCE_STATE_RECYCLER_LAYOUT";
 
     @BindView(R.id.movie_list) RecyclerView movieList;
     @BindView(R.id.refresh) SwipeRefreshLayout swipeRefreshLayout;
@@ -51,6 +53,8 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
 
     @NonNull private Optional<BindingListAdapter<MovieListItemModel, MovieListViewHolder>> adapter
             = Optional.empty();
+    private GridLayoutManager layoutManager;
+    private GridLayoutManager.SavedState layoutState;
 
     @Override
     public void onAttach(Context context) {
@@ -88,7 +92,8 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
         Point size = new Point();
         display.getSize(size);
         int width = (int) units.toDp(size.x);
-        movieList.setLayoutManager(new GridLayoutManager(getActivity(), width / 180));
+        layoutManager = new GridLayoutManager(getActivity(), width / 180);
+        movieList.setLayoutManager(layoutManager);
         adapter = Optional.of(new BindingListAdapter<MovieListItemModel, MovieListViewHolder>() {
             @Override
             public MovieListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -102,6 +107,14 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
         swipeRefreshLayout.setOnRefreshListener(() -> {
             presenter.requestModel();
         });
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            layoutState = savedInstanceState.getParcelable(INSTANCE_STATE_RECYCLER_LAYOUT);
+        }
     }
 
     @Override
@@ -127,6 +140,10 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
         error.setVisibility(View.INVISIBLE);
         adapter.ifPresent(adapter -> {
             adapter.updateModel(model);
+            if (layoutState != null) {
+                layoutManager.onRestoreInstanceState(layoutState);
+                layoutState = null;
+            }
         });
     }
 
@@ -150,5 +167,13 @@ public class MovieListFragment extends BaseFragment implements MovieListContract
     public void onPause() {
         super.onPause();
         presenter.onPause();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (outState != null) {
+            outState.putParcelable(INSTANCE_STATE_RECYCLER_LAYOUT, layoutManager.onSaveInstanceState());
+        }
     }
 }
