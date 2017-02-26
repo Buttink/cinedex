@@ -33,7 +33,7 @@
 
         <provider
             android:authorities="com.stockingd.cinedex.favorite.data.FavoritesProvider"
-            android:name=".favorite.data.generated.FavoritesProvider"
+            android:name=".favorite.data.impl.FavoritesProvider"
             android:exported="false"/>
     </application>
 

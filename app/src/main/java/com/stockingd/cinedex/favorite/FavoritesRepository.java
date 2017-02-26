@@ -22,7 +22,6 @@ public class FavoritesRepository {
 
     @NonNull private final ContentResolver contentResolver;
 
-
     private final Observable.Transformer<Cursor, List<FavoriteEntity>> cursorToFavoriteTransformer =
             cursorObservable -> cursorObservable.map(cursor -> {
                 List<FavoriteEntity> favorites = new ArrayList<>();
@@ -84,9 +83,7 @@ public class FavoritesRepository {
     public Observable<Integer> delete(int id) {
         return Observable.defer(() -> {
             return Observable.just(
-                    contentResolver.delete(FavoritesProvider.Favorites.FAVORITES,
-                                           Favorite._ID + "=?",
-                                           new String[]{ String.valueOf(id) }));
+                    contentResolver.delete(FavoritesProvider.Favorites.withId(id), null, null));
         });
     }
 }

@@ -7,6 +7,10 @@ import net.simonvt.schematic.annotation.ContentUri;
 import net.simonvt.schematic.annotation.InexactContentUri;
 import net.simonvt.schematic.annotation.TableEndpoint;
 
+/*
+ * The generated classes by schematic are unused and instead this is just used as a place to store
+ * uris.
+ */
 @ContentProvider(authority = FavoritesProvider.AUTHORITY, database = FavoritesDatabase.class)
 public final class FavoritesProvider {
 
@@ -16,10 +20,10 @@ public final class FavoritesProvider {
     public static class Favorites {
 
         @ContentUri(
-                path = "favorites",
+                path = "favorite",
                 type = "vnd.android.cursor.dir/favorite",
                 defaultSort = Favorite.TITLE + " ASC")
-        public static final Uri FAVORITES = Uri.parse("content://" + AUTHORITY + "/favorites");
+        public static final Uri FAVORITES = Uri.parse("content://" + AUTHORITY + "/favorite");
 
         @InexactContentUri(
                 path = "favorite/#",
